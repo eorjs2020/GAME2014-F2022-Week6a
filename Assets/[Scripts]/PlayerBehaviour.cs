@@ -9,20 +9,34 @@ public class PlayerBehaviour : MonoBehaviour
     public Boundary boundary;
     public float verticalPosition;
     public float verticalSpeed = 6;
+    public bool usingMoblieInput = false;
 
-    public Camera cam;
+    Camera cam;
 
     void Start()
     {
         cam = Camera.main;
         transform.position = new Vector2(0, verticalPosition);
+
+
+        usingMoblieInput = Application.platform != RuntimePlatform.Android || Application.platform != RuntimePlatform.IPhonePlayer;
+        /*if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+        {
+            usingMoblieInput = false;
+        }
+        else
+        {
+            usingMoblieInput = true;
+        }*/
     }
     
     // Update is called once per frame
     void Update()
     {
-        MobileInput();
-        //ConventionalInput();
+        if(usingMoblieInput)
+            MobileInput();
+        else
+            ConventionalInput();
         Move();
     }
     
