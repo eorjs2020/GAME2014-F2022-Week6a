@@ -26,10 +26,10 @@ public class PlayerBehaviour : MonoBehaviour
 
 
         transform.position += new Vector3(x, 0, 0);        
-
+        float clampPosition = Mathf.Clamp(transform.position.x, boundary.min, boundary.max);
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, boundary.min, boundary.max) , verticalPosition);
     }
-    void CheckBound()
+  /*  void CheckBound()
     {
         if (transform.position.x > boundary.max)
         {
@@ -40,5 +40,5 @@ public class PlayerBehaviour : MonoBehaviour
             transform.position = new Vector2(boundary.min, verticalPosition);
         }
         
-    }
+    }*/
 }
