@@ -18,8 +18,9 @@ public class PlayerBehaviour : MonoBehaviour
         cam = Camera.main;
         transform.position = new Vector2(0, verticalPosition);
 
-
-        usingMoblieInput = Application.platform != RuntimePlatform.Android || Application.platform != RuntimePlatform.IPhonePlayer;
+        
+        usingMoblieInput = Application.platform == RuntimePlatform.Android ||
+                           Application.platform == RuntimePlatform.IPhonePlayer;
         /*if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
         {
             usingMoblieInput = false;
