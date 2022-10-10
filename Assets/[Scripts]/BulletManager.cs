@@ -26,6 +26,8 @@ public class BulletManager : MonoBehaviour
         {
             CreateBullet();
         }
+
+        bulletCount = bulletPool.Count;
     }
 
     public GameObject GetBullet(Vector2 position, BulletDirection direction)

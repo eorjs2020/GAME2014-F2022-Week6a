@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 1371790946}
   - component: {fileID: 1371790947}
   - component: {fileID: 1371790948}
+  - component: {fileID: 1371790949}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -500,6 +501,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreLable: {fileID: 2057718166}
   score: 0
+--- !u!114 &1371790949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371790944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec12f596324824d48895f24418c5a7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 819580001318998966, guid: 0dd9c745023b31f4cb83b9c2f3d36c5f, type: 3}
+  bulletCount: 0
+  activeBullets: 0
+  parents: {fileID: 439539227}
+  bulletNumber: 25
 --- !u!1001 &1458527663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -749,6 +767,10 @@ PrefabInstance:
     - target: {fileID: 2363908749160850881, guid: b782c286095164249b8456957d3bc865, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363908749160850882, guid: b782c286095164249b8456957d3bc865, type: 3}
+      propertyPath: fireRate
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2363908749160850882, guid: b782c286095164249b8456957d3bc865, type: 3}
       propertyPath: bulletParent

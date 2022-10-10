@@ -14,12 +14,16 @@ public struct ScreenBounds
 
 public class BulletBehaviour : MonoBehaviour
 {
+    [Header("Bullet Properties")]
     public float speed;
     public BulletDirection direction;
     public Vector3 velocity;
     public ScreenBounds bounds;
+    public BulletManager bulletManager;
+
     private void Start()
     {
+        bulletManager = FindObjectOfType<BulletManager>();
         SetDirection(direction);
     }
 
@@ -40,15 +44,14 @@ public class BulletBehaviour : MonoBehaviour
             (transform.position.x < bounds.horizontal.min) ||
             (transform.position.y > bounds.vertical.max) ||
             (transform.position.y < bounds.vertical.min))
-        {
-            Debug.Log("aa");
-            Destroy(this.gameObject);
+        {            
+            bulletManager.ReturnBullet(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        bulletManager.ReturnBullet(this.gameObject);
     }
 
     public void SetDirection(BulletDirection dir)
