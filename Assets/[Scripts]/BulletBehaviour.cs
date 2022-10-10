@@ -20,21 +20,7 @@ public class BulletBehaviour : MonoBehaviour
     public ScreenBounds bounds;
     private void Start()
     {
-        switch (direction)
-        {
-            case BulletDirection.UP:
-                velocity = Vector3.up * speed;
-                break;
-            case BulletDirection.DOWN:
-                velocity = Vector3.down * speed;
-                break;
-            case BulletDirection.LEFT:
-                velocity = Vector3.left * speed;
-                break;
-            case BulletDirection.RIGHT:
-                velocity = Vector3.right * speed;
-                break;
-        }
+        SetDirection(direction);
     }
 
     private void Update()
@@ -63,5 +49,24 @@ public class BulletBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(this.gameObject);
+    }
+
+    public void SetDirection(BulletDirection dir)
+    {
+        switch (dir)
+        {
+            case BulletDirection.UP:
+                velocity = Vector3.up * speed;
+                break;
+            case BulletDirection.DOWN:
+                velocity = Vector3.down * speed;
+                break;
+            case BulletDirection.LEFT:
+                velocity = Vector3.left * speed;
+                break;
+            case BulletDirection.RIGHT:
+                velocity = Vector3.right * speed;
+                break;
+        }
     }
 }
