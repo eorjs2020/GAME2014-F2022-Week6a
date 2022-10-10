@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-
+    [Header("Player Properties")]
     public float speed = 2.0f;
     public Boundary boundary;
     public float verticalPosition;
     public float verticalSpeed = 6;
     public bool usingMoblieInput = false;
     public ScoreManager scoreManager;
+
+    [Header("Bullet Properties")]
+    public Transform bulletSpawnPoint;
+    public GameObject bulletPrefab;
+    public float fireRate = 0.2f;
+    public Transform bulletParent;
 
     Camera cam;
 
@@ -31,6 +37,7 @@ public class PlayerBehaviour : MonoBehaviour
             usingMoblieInput = true;
         }*/
         scoreManager = FindObjectOfType<ScoreManager>();
+        InvokeRepeating("FireBullets", 0.0f, fireRate);
     }
     
     // Update is called once per frame
@@ -66,6 +73,11 @@ public class PlayerBehaviour : MonoBehaviour
     {             
         float clampPosition = Mathf.Clamp(transform.position.x, boundary.min, boundary.max);
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, boundary.min, boundary.max) , verticalPosition);
+    }
+
+    void FireBullets()
+    {
+        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity, bulletParent);
     }
  
 }
