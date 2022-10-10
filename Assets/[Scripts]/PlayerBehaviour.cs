@@ -10,6 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float verticalPosition;
     public float verticalSpeed = 6;
     public bool usingMoblieInput = false;
+    public ScoreManager scoreManager;
 
     Camera cam;
 
@@ -29,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             usingMoblieInput = true;
         }*/
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
     
     // Update is called once per frame
@@ -39,6 +41,11 @@ public class PlayerBehaviour : MonoBehaviour
         else
             ConventionalInput();
         Move();
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            scoreManager.AddPoints(10);
+        }
     }
     
     public void MobileInput()
