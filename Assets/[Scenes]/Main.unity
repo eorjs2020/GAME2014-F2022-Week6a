@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 1371790947}
   - component: {fileID: 1371790948}
   - component: {fileID: 1371790949}
+  - component: {fileID: 1371790950}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -518,6 +519,22 @@ MonoBehaviour:
   activeBullets: 0
   parents: {fileID: 439539227}
   bulletNumber: 25
+--- !u!114 &1371790950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371790944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f58a099ab971c4397ba8b0c45651db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  playerBulletSprite: {fileID: 0}
+  enemyBulletSprite: {fileID: 0}
+  bulletParent: {fileID: 0}
 --- !u!1001 &1458527663
 PrefabInstance:
   m_ObjectHideFlags: 0
