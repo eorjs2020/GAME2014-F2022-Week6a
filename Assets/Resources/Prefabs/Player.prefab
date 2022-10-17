@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2363908749160850881}
+  - component: {fileID: -170090692079593671}
   - component: {fileID: 2363908749160850880}
   - component: {fileID: 2363908749160850883}
   - component: {fileID: 2363908749160850882}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +36,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &-170090692079593671
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363908749160850494}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!212 &2363908749160850880
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -151,9 +173,8 @@ MonoBehaviour:
   usingMoblieInput: 0
   scoreManager: {fileID: 0}
   bulletSpawnPoint: {fileID: 67052915790859355}
-  bulletPrefab: {fileID: 819580001318998966, guid: 0dd9c745023b31f4cb83b9c2f3d36c5f, type: 3}
   fireRate: 0.2
-  bulletParent: {fileID: 0}
+  bulletManager: {fileID: 0}
 --- !u!1 &6740029173015594119
 GameObject:
   m_ObjectHideFlags: 0

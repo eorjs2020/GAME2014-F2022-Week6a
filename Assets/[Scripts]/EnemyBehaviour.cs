@@ -12,11 +12,20 @@ public class EnemyBehaviour : MonoBehaviour
     public float verticallSpeed;
     public SpriteRenderer spriteRenderer;
     public Color ramColor;
+
+    [Header("Bullet Properties")]
+    public Transform bulletSpawnPoint;
+    public float fireRate = 0.2f;
+    public BulletManager bulletManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        bulletManager = FindObjectOfType<BulletManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         ResetEnemy();
+
+        InvokeRepeating("FireBullets", 0.0f, fireRate);
     }
 
     // Update is called once per frame
@@ -52,5 +61,10 @@ public class EnemyBehaviour : MonoBehaviour
         List<Color> colors = new List<Color>() {Color.red, Color.yellow, Color.magenta, Color.cyan, Color.white, Color.white };
         ramColor = colors[Random.Range(1, 6)];
         spriteRenderer.material.SetColor("_Color", ramColor);
+    }
+
+    void FireBullets()
+    {
+        var bullet = bulletManager.GetBullet(bulletSpawnPoint.position, BulletType.ENEMY);
     }
 }

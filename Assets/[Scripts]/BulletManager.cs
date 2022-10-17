@@ -6,63 +6,105 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     [Header("Bullet Properties")]
-    public Queue<GameObject> bulletPool;
-    public GameObject bulletPrefab;
-    public int bulletCount = 0;
-    public int activeBullets = 0;
-    public Transform parents;
-    public int bulletNumber = 50;
+    
+    public int playerBulletCount = 0;
+    public int playerActiveBullets = 0;
+    [Range(0, 50)]
+    public int playerBulletNumber = 50;
 
+    public int enemyBulletCount = 0;
+    public int enemyActiveBullets = 0;
+    [Range(0, 50)]
+    public int enemeyBulletNumber = 50;
+
+    public BulletFactory factory;
+
+    private Queue<GameObject> playerBulletPool;
+    private Queue<GameObject> enemyBulletPool;
     // Start is called before the first frame update
     void Start()
     {
-        bulletPool = new Queue<GameObject>();
+        playerBulletPool = new Queue<GameObject>(); //create an empty queue container
+        enemyBulletPool = new Queue<GameObject>();
+        factory = GameObject.FindObjectOfType<BulletFactory>();
         BuildBulletPool();
+        
     }
 
     void BuildBulletPool()
     {
-        for(int i = 0; i < bulletNumber; i++)
+        for(int i = 0; i < playerBulletNumber; i++)
         {
-            CreateBullet();
+            playerBulletPool.Enqueue(factory.createBullet(BulletType.PLAYER));
         }
 
-        bulletCount = bulletPool.Count;
+        for (int i = 0; i < enemeyBulletNumber; i++)
+        {
+            enemyBulletPool.Enqueue(factory.createBullet(BulletType.ENEMY));
+        }
+
+        playerBulletCount = playerBulletPool.Count;
+        enemyBulletCount = enemyBulletPool.Count;
     }
 
-    public GameObject GetBullet(Vector2 position, BulletDirection direction)
+    public GameObject GetBullet(Vector2 position, BulletType type)
     {
-        if (bulletPool.Count < 1)
+        
+
+        GameObject bullet = null;
+        
+        switch(type)
         {
-            CreateBullet();
-        }
-        var bullet = bulletPool.Dequeue();
+            case BulletType.PLAYER:
+                {
+                    if (playerBulletPool.Count < 1)
+                    {
+                        playerBulletPool.Enqueue(factory.createBullet(BulletType.PLAYER));
+                    }
+                    bullet = playerBulletPool.Dequeue();
+                    playerBulletCount = playerBulletPool.Count;
+                    playerActiveBullets++;
+                }
+                break;
+            case BulletType.ENEMY:
+                {
+                    if (enemyBulletPool.Count < 1)
+                    {
+                        enemyBulletPool.Enqueue(factory.createBullet(BulletType.ENEMY));
+                    }
+                    bullet = enemyBulletPool.Dequeue();
+                    enemyBulletCount = enemyBulletPool.Count;
+                    enemyActiveBullets++;
+                }
+                break;
+        }        
+           
         bullet.SetActive(true);
-        bullet.transform.position = position;
-        bullet.GetComponent<BulletBehaviour>().SetDirection(direction);
+        bullet.transform.position = position;        
 
         //stats
-        bulletCount = bulletPool.Count;
-        activeBullets++;
+        
 
         return bullet;
     }
-
-    private void CreateBullet()
-    {
-        var bullet = Instantiate(bulletPrefab);
-        bullet.SetActive(false);
-        bullet.transform.SetParent(parents);
-        bulletPool.Enqueue(bullet);
-    }
     
-    public void ReturnBullet(GameObject bullet)
+    public void ReturnBullet(GameObject bullet, BulletType type)
     {
         bullet.SetActive(false);
-        bulletPool.Enqueue(bullet);
 
-        //stats
-        bulletCount = bulletPool.Count;
-        activeBullets--;
+        switch(type)
+        {
+            case BulletType.ENEMY:
+                enemyBulletPool.Enqueue(bullet);
+                enemyBulletCount = enemyBulletPool.Count;
+                enemyActiveBullets--;
+                break;
+            case BulletType.PLAYER:
+                playerBulletPool.Enqueue(bullet);
+                playerBulletCount = playerBulletPool.Count;
+                playerActiveBullets--;
+                break;
+        }
+        
     }
 }

@@ -514,11 +514,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec12f596324824d48895f24418c5a7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 819580001318998966, guid: 0dd9c745023b31f4cb83b9c2f3d36c5f, type: 3}
-  bulletCount: 0
-  activeBullets: 0
-  parents: {fileID: 439539227}
-  bulletNumber: 25
+  playerBulletCount: 0
+  playerActiveBullets: 0
+  playerBulletNumber: 50
+  enemyBulletCount: 0
+  enemyActiveBullets: 0
+  enemeyBulletNumber: 50
+  factory: {fileID: 0}
 --- !u!114 &1371790950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,6 +795,10 @@ PrefabInstance:
       propertyPath: bulletParent
       value: 
       objectReference: {fileID: 439539227}
+    - target: {fileID: 2363908749160850883, guid: b782c286095164249b8456957d3bc865, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b782c286095164249b8456957d3bc865, type: 3}

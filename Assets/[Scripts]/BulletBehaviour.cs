@@ -20,6 +20,7 @@ public class BulletBehaviour : MonoBehaviour
     public Vector3 velocity;
     public ScreenBounds bounds;
     public BulletManager bulletManager;
+    public BulletType bulletType;
 
     private void Start()
     {
@@ -45,20 +46,26 @@ public class BulletBehaviour : MonoBehaviour
             (transform.position.y > bounds.vertical.max) ||
             (transform.position.y < bounds.vertical.min))
         {            
-            bulletManager.ReturnBullet(this.gameObject);
+            bulletManager.ReturnBullet(this.gameObject, bulletType);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bulletManager.ReturnBullet(this.gameObject);
+        if((bulletType == BulletType.PLAYER) || 
+            (bulletType == BulletType.ENEMY & collision.gameObject.CompareTag("Player")))
+        {
+            bulletManager.ReturnBullet(this.gameObject, bulletType);
+        }
+        
     }
 
     public void SetDirection(BulletDirection dir)
     {
+        direction = dir;
         switch (dir)
         {
-            case BulletDirection.UP:
+            case BulletDirection.UP:                
                 velocity = Vector3.up * speed;
                 break;
             case BulletDirection.DOWN:
