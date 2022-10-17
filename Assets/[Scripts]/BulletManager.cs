@@ -17,8 +17,8 @@ public class BulletManager : MonoBehaviour
     [Range(0, 50)]
     public int enemeyBulletNumber = 50;
 
-    public BulletFactory factory;
 
+    private BulletFactory factory;
     private Queue<GameObject> playerBulletPool;
     private Queue<GameObject> enemyBulletPool;
     // Start is called before the first frame update

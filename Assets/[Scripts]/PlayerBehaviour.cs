@@ -9,14 +9,15 @@ public class PlayerBehaviour : MonoBehaviour
     public Boundary boundary;
     public float verticalPosition;
     public float verticalSpeed = 6;
-    public bool usingMoblieInput = false;
-    public ScoreManager scoreManager;
+    public bool usingMoblieInput = false;    
 
     [Header("Bullet Properties")]
     public Transform bulletSpawnPoint;    
-    public float fireRate = 0.2f;    
-    public BulletManager bulletManager;
+    public float fireRate = 0.2f;
 
+
+    private BulletManager bulletManager;
+    private ScoreManager scoreManager;
     Camera cam;
 
     void Start()

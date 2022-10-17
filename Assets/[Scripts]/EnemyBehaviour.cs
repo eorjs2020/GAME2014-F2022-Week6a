@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("Bullet Properties")]
     public Transform bulletSpawnPoint;
     public float fireRate = 0.2f;
-    public BulletManager bulletManager;
+    private BulletManager bulletManager;
 
     // Start is called before the first frame update
     void Start()

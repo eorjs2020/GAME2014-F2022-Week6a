@@ -18,10 +18,10 @@ public class BulletBehaviour : MonoBehaviour
     public float speed;
     public BulletDirection direction;
     public Vector3 velocity;
-    public ScreenBounds bounds;
-    public BulletManager bulletManager;
+    public ScreenBounds bounds;    
     public BulletType bulletType;
 
+    private BulletManager bulletManager;
     private void Start()
     {
         bulletManager = FindObjectOfType<BulletManager>();

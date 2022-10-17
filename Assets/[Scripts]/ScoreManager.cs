@@ -6,13 +6,14 @@ using TMPro;
 [System.Serializable]
 public class ScoreManager : MonoBehaviour
 {
-    public TMP_Text scoreLable;
-    public int score = 0;
+    private int score = 0;
+    private TMP_Text scoreLable;
+
     // Start is called before the first frame update
     void Start()
     {
         SetScore(0);
-        
+        scoreLable = GameObject.Find("ScoreLabel").GetComponent<TMP_Text>();
     }
 
    
