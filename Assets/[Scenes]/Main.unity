@@ -447,10 +447,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1371790946}
+  - component: {fileID: 1371790950}
   - component: {fileID: 1371790947}
   - component: {fileID: 1371790948}
   - component: {fileID: 1371790949}
-  - component: {fileID: 1371790950}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -486,8 +486,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyNumber: 3
-  enemyPrefab: {fileID: 1514273566235291775, guid: 2f53cf2049593554d9e6ec41a51811c7, type: 3}
-  enemyList: []
 --- !u!114 &1371790948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,8 +498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4e27491173de04daaeeec57222831d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreLable: {fileID: 2057718166}
-  score: 0
 --- !u!114 &1371790949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +516,6 @@ MonoBehaviour:
   enemyBulletCount: 0
   enemyActiveBullets: 0
   enemeyBulletNumber: 50
-  factory: {fileID: 0}
 --- !u!114 &1371790950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,10 +528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f58a099ab971c4397ba8b0c45651db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  playerBulletSprite: {fileID: 0}
-  enemyBulletSprite: {fileID: 0}
-  bulletParent: {fileID: 0}
 --- !u!1001 &1458527663
 PrefabInstance:
   m_ObjectHideFlags: 0
