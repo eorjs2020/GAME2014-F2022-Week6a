@@ -11,9 +11,9 @@ public class ScoreManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
+        scoreLable = GameObject.Find("ScoreLable").GetComponent<TMP_Text>();
         SetScore(0);
-        scoreLable = GameObject.Find("ScoreLabel").GetComponent<TMP_Text>();
     }
 
    

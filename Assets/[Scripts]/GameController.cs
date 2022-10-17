@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyPrefab = Resources.Load<GameObject>("Prefab/Enemy");
+        enemyPrefab = Resources.Load<GameObject>("Prefabs/Enemy");
         BuildEnemyList();
     }
 

@@ -18,16 +18,16 @@ public class BulletFactory : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Initialize();
     }
 
     private void Initialize()
     {
-        playerBulletSprite = Resources.Load<Sprite>("Sprites/Bullet");
-        enemyBulletSprite = Resources.Load<Sprite>("Sprites/EnemySmallBullet");
         bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
+        playerBulletSprite = Resources.Load<Sprite>("Sprites/Bullet");
+        enemyBulletSprite = Resources.Load<Sprite>("Sprites/EnemySmallBullet");        
         bulletParent = GameObject.Find("Bullets").transform;
     }
 
